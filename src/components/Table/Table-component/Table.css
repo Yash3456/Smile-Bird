@@ -48,15 +48,15 @@
   color: white;
 }
 
-.label-draft {
+.label-pending {
   background-color: #777;
 }
 
-.label-live {
+.label-done {
   background-color: #42a942;
 }
 
-.label-error {
+.label-left {
   background-color: #d9534f;
 }
 

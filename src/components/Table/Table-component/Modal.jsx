@@ -7,7 +7,7 @@ export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
     defaultValue || {
       page: "",
       description: "",
-      status: "live",
+      status: "pending",
     }
   );
   const [errors, setErrors] = useState("");
@@ -70,9 +70,9 @@ export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
               onChange={handleChange}
               value={formState.status}
             >
-              <option value="live">Live</option>
-              <option value="draft">Draft</option>
-              <option value="error">Error</option>
+              <option value="live">done</option>
+              <option value="draft">pending</option>
+              <option value="error">left</option>
             </select>
           </div>
           {errors && <div className="error">{`Please include: ${errors}`}</div>}

@@ -8,19 +8,19 @@ export const TableStructure =()=>{
   const [modalOpen, setModalOpen] = useState(false);
   const [rows, setRows] = useState([
     {
-      page: "Home",
-      description: "This is the main page of the website",
-      status: "live",
+      page: "1st December",
+      description: "Appointment at Dentist.",
+      status: "done",
     },
     {
-      page: "About Us",
-      description: "This page has details about the company",
-      status: "draft",
+      page: "2nd December",
+      description: "Appointment with doctor at Hospital",
+      status: "pending",
     },
     {
-      page: "Pricing",
-      description: "Prices for different subscriptions",
-      status: "error",
+      page: "3rd November",
+      description: "Appointment with Doctor at Clinic",
+      status: "left",
     },
   ]);
   const [rowToEdit, setRowToEdit] = useState(null);
