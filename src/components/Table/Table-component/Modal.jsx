@@ -52,7 +52,7 @@ export const Modal = ({ closeModal, onSubmit, defaultValue }) => {
       <div className="modal">
         <form>
           <div className="form-group">
-            <label htmlFor="page">Page</label>
+            <label htmlFor="page">Date</label>
             <input name="page" onChange={handleChange} value={formState.page} />
           </div>
           <div className="form-group">
