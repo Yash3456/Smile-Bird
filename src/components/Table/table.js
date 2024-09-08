@@ -1,70 +1,61 @@
-import { useState } from "react";
-import React from "react";
-import "./table.css";
-import { Table } from "./Table-component/Table";
-import { Modal } from "./Table-component/Modal";
+import React, { useState, useEffect } from "react";
+import Table from "./Table2"; // Assuming your table component is in Table2
+import axios from "axios";
 
-export const TableStructure =()=>{
-  const [modalOpen, setModalOpen] = useState(false);
-  const [rows, setRows] = useState([
-    {
-      page: "1st December",
-      description: "Appointment at Dentist.",
-      status: "done",
-    },
-    {
-      page: "2nd December",
-      description: "Appointment with doctor at Hospital",
-      status: "pending",
-    },
-    {
-      page: "3rd November",
-      description: "Appointment with Doctor at Clinic",
-      status: "left",
-    },
-  ]);
-  const [rowToEdit, setRowToEdit] = useState(null);
+const TableStructure = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false); // Loading state
 
-  const handleDeleteRow = (targetIndex) => {
-    setRows(rows.filter((_, idx) => idx !== targetIndex));
-  };
+  useEffect(() => {
+    fetchData(); // Fetch data when component mounts
+  }, []);
 
-  const handleEditRow = (idx) => {
-    setRowToEdit(idx);
-
-    setModalOpen(true);
-  };
-
-  const handleSubmit = (newRow) => {
-    rowToEdit === null
-      ? setRows([...rows, newRow])
-      : setRows(
-          rows.map((currRow, idx) => {
-            if (idx !== rowToEdit) return currRow;
-
-            return newRow;
-          })
-        );
+  const fetchData = async () => {
+    setLoading(true); // Show loading modal before fetching data
+    try {
+      const response = await axios.post(
+        "http://localhost:9000/getapplications",
+        {
+          username: "Yash goyal", // Mocked username; can be dynamic
+        }
+      );
+      const agents = await response.data;
+      console.log(response.data, "DATA Fetched");
+      setData(agents); // Update the table with fetched data
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false); // Hide loading modal after data is fetched
+    }
   };
 
   return (
-    <div className="tablebody">
-      <Table rows={rows} deleteRow={handleDeleteRow} editRow={handleEditRow} />
-      <button onClick={() => setModalOpen(true)} className="btn">
-        Add
-      </button>
-      {modalOpen && (
-        <Modal
-          closeModal={() => {
-            setModalOpen(false);
-            setRowToEdit(null);
-          }}
-          onSubmit={handleSubmit}
-          defaultValue={rowToEdit !== null && rows[rowToEdit]}
-        />
+    <div>
+      <h1
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: 40,
+        }}
+      >
+        Applicants List
+      </h1>
+
+      {/* Show loading modal */}
+      {loading && (
+        <div className="loading-modal">
+          <div className="loading-content">
+            <p>Loading...</p>
+          </div>
+        </div>
       )}
+
+      {/* Pass the data and fetchData function to the Table component */}
+      <Table data={data} fetchData={fetchData} />
     </div>
   );
-}
+};
 
 export default TableStructure;

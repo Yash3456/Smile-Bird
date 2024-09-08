@@ -4,8 +4,8 @@ import TableStructure from "./components/Table/table";
 function App() {
   return (
     <div className="page">
-     <LoginDialogue/>
-      <TableStructure/>
+      <LoginDialogue />
+      <TableStructure />
     </div>
   );
 }

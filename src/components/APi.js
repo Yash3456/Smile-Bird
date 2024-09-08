@@ -1,24 +1,23 @@
 import axios from "axios";
-const url = 'https://bakend-xi.vercel.app';
+const url = "https://money-squad-backend-service.vercel.app";
 
 export const authenticateSignup = async (user) => {
-    try {
-        
-        return await axios.post(`${url}/signup`, user);
-    } catch (error) {
-       if(error.response){
-        console.log('Error while calling Signup API: ', error);
-       }
+  try {
+    return await axios.post(`${url}/newuser`, user);
+  } catch (error) {
+    if (error.response) {
+      console.log("Error while calling Signup API: ", error);
     }
-}
+  }
+};
 
 export const authenticateLogin = async (user) => {
-    try {
-        return await axios.post(`${url}/login`, user);
-    } catch (error) {
-       if(error.response){
-        console.log('Error while calling login API: ', error);
-        return error.response;
-       }
+  try {
+    return await axios.post(`${url}/checkuser`, user);
+  } catch (error) {
+    if (error.response) {
+      console.log("Error while calling login API: ", error);
+      return error.response;
     }
-}
+  }
+};
