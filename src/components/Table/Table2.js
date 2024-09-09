@@ -49,6 +49,7 @@ const Table = ({ data, fetchData }) => {
       },
       { Header: "Name", accessor: "Name" },
       { Header: "DOB", accessor: "DOB" },
+      { Header: "Salary", accessor: "Salary" },
       { Header: "Obligation", accessor: "Obligation" },
       { Header: "Due", accessor: "Due" },
       { Header: "PAN", accessor: "PAN" },
