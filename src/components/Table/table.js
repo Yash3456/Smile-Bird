@@ -14,7 +14,7 @@ const TableStructure = () => {
     setLoading(true); // Show loading modal before fetching data
     try {
       const response = await axios.post(
-        "http://localhost:9000/getapplications",
+        "https://money-squad-backend-service.vercel.app/getapplications",
         {
           username: "Yash goyal", // Mocked username; can be dynamic
         }

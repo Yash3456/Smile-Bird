@@ -54,7 +54,7 @@ const Table = ({ data, fetchData }) => {
       { Header: "PAN", accessor: "PAN" },
       { Header: "Number", accessor: "Number" },
       { Header: "Employment", accessor: "Employment" },
-      { Header: "CreditModel", accessor: "CreditModel" },
+      { Header: "CreditModel", accessor: "CreditModelL" },
       { Header: "Experience", accessor: "Experience" },
     ],
     []
