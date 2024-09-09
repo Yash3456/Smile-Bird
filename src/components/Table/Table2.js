@@ -42,8 +42,14 @@ const Table = ({ data, fetchData }) => {
             }
           >
             <option value="Pending">Pending</option>
+            <option value="In Process">In Process</option>
+            <option value="On Hold">On Hold</option>
             <option value="Approved">Approved</option>
             <option value="Rejected">Rejected</option>
+            <option value="Disbursed">Disbursed</option>
+            <option value="Cancelled by Applicant">
+              Cancelled by Applicant
+            </option>
           </select>
         ),
       },
